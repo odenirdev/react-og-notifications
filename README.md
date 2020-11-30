@@ -8,21 +8,79 @@
 
 ```bash
 npm install --save react-og-notifications
+
+or
+
+yarn add react-og-notifications
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'react-og-notifications'
-import 'react-og-notifications/dist/index.css'
+import Button from 'react-og-buttons'
+import notification, { Grid as NotificationsGrid } from 'react-og-notifications'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
+import GlobalStyle from './styles'
+
+const App = () => {
+  function defaultNotification() {
+    notification(
+      'Message notificaction default',
+      'default',
+      'Notification default'
+    )
   }
+
+  function successNotification() {
+    notification(
+      'Message notificaction success',
+      'success',
+      'Notification success'
+    )
+  }
+
+  function warningNotification() {
+    notification(
+      'Message notificaction warning',
+      'warning',
+      'Notification warning'
+    )
+  }
+
+  function infoNotification() {
+    notification('Message notificaction info', 'info', 'Notification info')
+  }
+
+  function errorNotification() {
+    notification('Message notificaction error', 'error', 'Notification error')
+  }
+
+  return (
+    <>
+      <GlobalStyle />
+      <NotificationsGrid />
+      <div>
+        <Button onClick={defaultNotification}>Notification</Button>
+        <Button typeStyle='success' onClick={successNotification}>
+          Success notification
+        </Button>
+        <Button backgroundColor='#40a3b9' onClick={infoNotification}>
+          Info notification
+        </Button>
+        <Button typeStyle='warning' onClick={warningNotification}>
+          Warning notification
+        </Button>
+        <Button typeStyle='danger' onClick={errorNotification}>
+          Error notification
+        </Button>
+      </div>
+    </>
+  )
 }
+
+export default App
 ```
 
 ## License
